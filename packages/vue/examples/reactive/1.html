@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">
+      <p class="p1"></p>
+      <p class="p2"></p>
+    </div>
+    <script src="../../dist/vue.js"></script>
+    <script>
+      const { reactive, effect } = Vue
+      const obj = reactive({
+        name: 'vue'
+      })
+      effect(() => {
+        document.querySelector('.p1').innerHTML = obj.name
+      })
+      effect(() => {
+        document.querySelector('.p2').innerHTML = `p2 ${obj.name}`
+      })
+      setTimeout(() => {
+        obj.name = 'hello world'
+      }, 1000)
+    </script>
+  </body>
+</html>
